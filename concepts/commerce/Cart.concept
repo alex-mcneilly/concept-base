@@ -1,0 +1,38 @@
+<concept>
+ <name>Cart</name>
+ <purpose>
+   To allow users to accumulate items for purchase before completing a transaction
+ </purpose>
+ <state>
+   <component name="items" type="list">
+     Items added to cart with quantities
+   </component>
+   <component name="total" type="number">
+     Current total price of items
+   </component>
+   <component name="discounts" type="list">
+     Applied promotional discounts
+   </component>
+ </state>
+ <actions>
+   <action name="addItem">
+     <precondition>Item is available for purchase</precondition>
+     <effect>Adds item to cart with specified quantity</effect>
+   </action>
+   <action name="removeItem">
+     <precondition>Item exists in cart</precondition>
+     <effect>Removes item from cart</effect>
+   </action>
+   <action name="updateQuantity">
+     <precondition>Item exists in cart</precondition>
+     <effect>Changes quantity of item</effect>
+   </action>
+   <action name="checkout">
+     <precondition>Cart contains items and payment is valid</precondition>
+     <effect>Converts cart to order and empties cart</effect>
+   </action>
+ </actions>
+ <operationalPrinciple>
+   Users add items they wish to purchase to their cart, adjust quantities as needed, and proceed to checkout when ready to complete their purchase.
+ </operationalPrinciple>
+</concept>

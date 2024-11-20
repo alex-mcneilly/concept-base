@@ -1,16 +1,38 @@
 <concept>
-  <name>Collection</name>
-  <purpose></purpose>
-  <state>
-    <component></component>
-  </state>
-  <actions>
-    <action>
-      <precondition></precondition>
-      <effect></effect>
-    </action>
-  </actions>
-  <operationalPrinciple>
-    
-  </operationalPrinciple>
+ <name>Collection</name>
+ <purpose>
+   To group related items together in a flexible, non-hierarchical way that allows items to belong to multiple collections
+ </purpose>
+ <state>
+   <component name="items" type="set">
+     Items in the collection
+   </component>
+   <component name="name" type="string">
+     Display name of collection
+   </component>
+   <component name="description" type="string">
+     Optional description of collection
+   </component>
+ </state>
+ <actions>
+   <action name="create">
+     <precondition>None</precondition>
+     <effect>Creates new empty collection</effect>
+   </action>
+   <action name="addItem">
+     <precondition>Item exists</precondition>
+     <effect>Adds item to collection</effect>
+   </action>
+   <action name="removeItem">
+     <precondition>Item exists in collection</precondition>
+     <effect>Removes item from collection</effect>
+   </action>
+   <action name="rename">
+     <precondition>Collection exists</precondition>
+     <effect>Updates collection name</effect>
+   </action>
+ </actions>
+ <operationalPrinciple>
+   Users create named collections and add/remove items flexibly. Unlike folders, items can belong to multiple collections simultaneously.
+ </operationalPrinciple>
 </concept>

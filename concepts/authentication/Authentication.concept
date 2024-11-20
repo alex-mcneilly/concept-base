@@ -1,16 +1,34 @@
 <concept>
-  <name>Authentication</name>
-  <purpose></purpose>
-  <state>
-    <component></component>
-  </state>
-  <actions>
-    <action>
-      <precondition></precondition>
-      <effect></effect>
-    </action>
-  </actions>
-  <operationalPrinciple>
-    
-  </operationalPrinciple>
+ <name>Authentication</name>
+ <purpose>
+   To verify the identity of users and ensure they are who they claim to be when accessing a system
+ </purpose>
+ <state>
+   <component name="credentials" type="map">
+     Stored authentication credentials (e.g. username/password pairs)
+   </component>
+   <component name="sessions" type="set">
+     Currently active authenticated sessions
+   </component>
+   <component name="failedAttempts" type="map">
+     Count of failed login attempts per user/IP
+   </component>
+ </state>
+ <actions>
+   <action name="login">
+     <precondition>Valid credentials provided</precondition>
+     <effect>Creates new authenticated session</effect>
+   </action>
+   <action name="logout">
+     <precondition>Active session exists</precondition>
+     <effect>Terminates authenticated session</effect>
+   </action>
+   <action name="resetPassword">
+     <precondition>User identity verified via alternate means</precondition>
+     <effect>Updates stored credentials</effect>
+   </action>
+ </actions>
+ <operationalPrinciple>
+   Users provide credentials to prove their identity. If valid, they receive an authenticated session allowing access to protected resources until they logout or the session expires.
+ </operationalPrinciple>
 </concept>
