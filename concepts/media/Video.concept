@@ -1,0 +1,16 @@
+<concept>
+  <name>Video</name>
+  <purpose></purpose>
+  <state>
+    <component></component>
+  </state>
+  <actions>
+    <action>
+      <precondition></precondition>
+      <effect></effect>
+    </action>
+  </actions>
+  <operationalPrinciple>
+    
+  </operationalPrinciple>
+</concept>

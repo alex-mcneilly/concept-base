@@ -1,0 +1,16 @@
+<concept>
+  <name>ConceptName</name>
+  <purpose>Clear statement of the concept's purpose</purpose>
+  <state>
+    <component>description</component>
+  </state>
+  <actions>
+    <action>
+      <precondition>required conditions</precondition>
+      <effect>state changes</effect>
+    </action>
+  </actions>
+  <operationalPrinciple>
+    Description of how the concept works in practice
+  </operationalPrinciple>
+</concept>
