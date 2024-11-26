@@ -1,0 +1,537 @@
+CONCEPT BANK IN CUSTOM CONCEPT XML
+
+<!-- Primitive concepts -->
+
+<concept iteration="05">
+    <name>Concept</name>
+    <purpose>Serves as the foundational abstraction for all software concepts, providing a standard format for its related actions, purpose, and behavior definition</purpose>
+    <state>
+        <component code_name="schema" code_datatype="object">Defines the structure of the concept including tables, views, and actions.</component>
+    </state>
+    <actions>
+        <action>
+            <name>initializeSchema</name>
+            <precondition>None</precondition>
+            <effect>Initializes the concept's schema.</effect>
+        </action>
+    </actions>
+    <operationalPrinciple>
+        When a new concept is defined, it initializes its schema to establish its structure and behavior, ensuring consistency across all concepts.
+    </operationalPrinciple>
+</concept>
+
+<concept iteration="01">
+    <name>Collection</name>
+    <purpose>Manages ordered or filtered assemblies of items based on a specified rule</purpose>
+    <state>
+        <component code_name="collections" code_datatype="map">Group of items organized based on a rule</component>
+    </state>
+    <actions>
+        <action>
+            <name>createCollection</name>
+            <precondition>Rule for collection is defined</precondition>
+            <effect>Creates a new collection based on the specified rule</effect>
+        </action>
+        <action>
+            <name>updateCollection</name>
+            <precondition>Collection exists</precondition>
+            <effect>Updates the rules or items in the collection</effect>
+        </action>
+        <action>
+            <name>deleteCollection</name>
+            <precondition>Collection exists</precondition>
+            <effect>Deletes the specified collection</effect>
+        </action>
+        <action>
+            <name>getCollection</name>
+            <precondition>Collection exists</precondition>
+            <effect>Retrieves the items in the specified collection</effect>
+        </action>
+    </actions>
+    <operationalPrinciple>
+        Users can create, update, delete, and retrieve collections of items 
+        that are systematically ordered or filtered based on 
+        defined rules or criteria.
+    </operationalPrinciple>
+</concept>
+
+<concept iteration="01">
+  <name>Mapping</name>
+  <purpose>Highlights relationship between different entities within a system</purpose>
+  <state>
+    <component code_name="relations" code_datatype="map">Mappings between entities, defining their relationships</component>
+  </state>
+  <actions>
+    <action>
+      <name>createMapping</name>
+      <precondition>Entities to be mapped exist</precondition>
+      <effect>Establishes a new relationship between entities</effect>
+    </action>
+    <action>
+      <name>removeMapping</name>
+      <precondition>Mapping exists between entities</precondition>
+      <effect>Removes the existing relationship between entities</effect>
+    </action>
+    <action>
+      <name>getMapping</name>
+      <precondition>Entities are specified</precondition>
+      <effect>Retrieves the relationship between the specified entities</effect>
+    </action>
+  </actions>
+  <operationalPrinciple>
+    Relationships between entities are defined and managed through mappings,
+     allowing the system to understand how different components interact.
+  </operationalPrinciple>
+</concept>
+
+<concept iteration="04">
+    <name>Set</name>
+    <purpose>Manages collections of unique elements</purpose>
+    <state>
+        <component code_name="elements" code_datatype="set">Set of unique elements</component>
+    </state>
+    <actions>
+        <action>
+            <name>addElement</name>
+            <precondition>Element is not already in the set./precondition>
+            <effect>Adds the element to the set</effect>
+        </action>
+        <action>
+            <name>removeElement</name>
+            <precondition>Element exists in the set</precondition>
+            <effect>Removes the element from the set</effect>
+        </action>
+        <action>
+            <name>containsElement</name>
+            <precondition>Element is specified</precondition>
+            <effect>Checks if the element is present in the set</effect>
+        </action>
+    </actions>
+    <operationalPrinciple>
+        Elements can be added to or removed from the set, 
+        ensuring each element is unique and providing efficient 
+        lookup and management.
+    </operationalPrinciple>
+</concept>
+
+
+<!-- Authentication concepts -->
+<concept iteration="06">
+    <name>Authenticating</name>
+    <purpose>Verifies the identity of users when accessing the system.</purpose>
+    <state>
+        <component code_name="credentials" code_datatype="map">Stored authentication credentials (e.g., email/password pairs).</component>
+        <component code_name="sessions" code_datatype="set">Currently active authenticated sessions.</component>
+        <component code_name="failedAttempts" code_datatype="map">Count of failed login attempts per user/IP.</component>
+    </state>
+    <actions>
+        <action>
+            <name>authenticate</name>
+            <precondition>Valid credentials provided.</precondition>
+            <effect>Creates a new authenticated session.</effect>
+        </action>
+    </actions>
+    <operationalPrinciple>
+        Users provide credentials to prove their identity. If valid, they are allowed access to protected resources until their authentication ends
+    </operationalPrinciple>
+</concept>
+
+<concept>
+    <name>Authorizing</name>
+    <purpose>Controls access to resources based on user permissions and roles.</purpose>
+    <state>
+        <component code_name="permissions" code_datatype="map">Mappings of roles to their permissions.</component>
+        <component code_name="roles" code_datatype="set">Defined user roles within the system.</component>
+        <component code_name="userRoles" code_datatype="map">Mappings of users to their assigned roles.</component>
+    </state>
+    <actions>
+        <action>
+            <name>assignRole</name>
+            <precondition>User exists and role is defined.</precondition>
+            <effect>Assigns a role to a user.</effect>
+        </action>
+        <action>
+            <name>revokeRole</name>
+            <precondition>User has the role assigned.</precondition>
+            <effect>Revokes a role from a user.</effect>
+        </action>
+        <action>
+            <name>checkPermission</name>
+            <precondition>User is authenticated.</precondition>
+            <effect>Determines if the user has the required permission to access a resource.</effect>
+        </action>
+    </actions>
+    <operationalPrinciple>
+        Users assigned roles which grant them specific permissions. When a user attempts 
+        to access a resource, the system checks if their roles include the necessary 
+        permissions to allow the action.
+    </operationalPrinciple>
+</concept>
+
+<concept>
+    <name>Token</name>
+    <purpose>Generates and manage tokens</purpose>
+    <state>
+        <component code_name="tokens" code_datatype="map">Token keys, signed using secrets or key pairs</component>
+        <component code_name="revokedTokens" code_datatype="set">List of tokens that have been revoked.</component>
+    </state>
+    <actions>
+        <action>
+            <name>generateToken</name>
+            <precondition>User is authenticated.</precondition>
+            <effect>Generates a new token for the user.</effect>
+        </action>
+        <action>
+            <name>revokeToken</name>
+            <precondition>Token exists and is valid.</precondition>
+            <effect>Revokes the specified token.</effect>
+        </action>
+        <action>
+            <name>validateToken</name>
+            <precondition>Token is provided.</precondition>
+            <effect>Validates the token's authenticity and status.</effect>
+        </action>
+    </actions>
+    <operationalPrinciple>
+        A token can be generated when called to. 
+        Tokens can be validated for authenticity
+        and revoked as needed to manage access.
+    </operationalPrinciple>
+</concept>
+
+
+<!-- Content concepts -->
+<concept iteration="02">
+    <name>Articleing</name>
+    <purpose>Handles articles authored by users</purpose>
+    <state>
+        <component code_name="articles" code_datatype="map">Store of articles with its attributes</component>
+        <component code_name="slugs" code_datatype="map">Unique identifiers for articles based on titles</component>
+    </state>
+    <actions>
+        <action>
+            <name>createArticle</name>
+            <precondition>Authenticated user provides required article data.</precondition>
+            <effect>Creates a new article and assigns a unique slug.</effect>
+        </action>
+        <action>
+            <name>updateArticle</name>
+            <precondition>Authenticated user is the author of the article.</precondition>
+            <effect>Updates the article's content and potentially its slug.</effect>
+        </action>
+        <action>
+            <name>deleteArticle</name>
+            <precondition>Authenticated user is the author of the article.</precondition>
+            <effect>Deletes the specified article.</effect>
+        </action>
+        <action>
+            <name>favoriteArticle</name>
+            <precondition>Authenticated user.</precondition>
+            <effect>Marks the article as favorited by the user and increments the favorites count.</effect>
+        </action>
+        <action>
+            <name>unfavoriteArticle</name>
+            <precondition>Authenticated user has favorited the article.</precondition>
+            <effect>Removes the favorite mark and decrements the favorites count.</effect>
+        </action>
+        <action>
+            <name>listArticles</name>
+            <precondition>None or query parameters provided.</precondition>
+            <effect>Retrieves a list of articles based on filters and pagination.</effect>
+        </action>
+        <action>
+            <name>feedArticles</name>
+            <precondition>Authenticated user.</precondition>
+            <effect>Retrieves articles from users that the authenticated user follows.</effect>
+        </action>
+        <action>
+            <name>getArticle</name>
+            <precondition>Article exists.</precondition>
+            <effect>Retrieves the specified article.</effect>
+        </action>
+    </actions>
+    <operationalPrinciple>
+        Users can create articles with titles, descriptions, and bodies,
+        which are stored with unique slugs. Other users can view, update,
+        delete, favorite, and unfavorite these articles, with lists being
+        filtered and paginated as needed.
+    </operationalPrinciple>
+</concept>
+
+<concept iteration="04">
+    <name>Commenting</name>
+    <purpose>Enables users to handle comments for content</purpose>
+    <state>
+        <component code_name="comments" code_datatype="map">Store of comments associated with content source</component>
+        <component code_name="commentIds" code_datatype="set">Unique identifiers for comments</component>
+    </state>
+    <actions>
+        <action>
+            <name>addComment</name>
+            <precondition>Authenticated user and existing content source</precondition>
+            <effect>Adds a new comment to the specified content source.</effect>
+        </action>
+        <action>
+            <name>getComments</name>
+            <precondition>Content source exists.</precondition>
+            <effect>Retrieves all comments for the specified content source.</effect>
+        </action>
+        <action>
+            <name>deleteComment</name>
+            <precondition>Authenticated user is the author of the comment.</precondition>
+            <effect>Deletes the specified comment.</effect>
+        </action>
+    </actions>
+    <operationalPrinciple>
+        Authenticated users can add comments to content, 
+        which are stored and can be retrieved or deleted by their authors.
+    </operationalPrinciple>
+</concept>
+
+<concept iteration="04">
+  <name>Favoriting</name>
+  <purpose>Enables users to favorite or unfavorite content sources</purpose>
+  <state>
+    <component code_name="favorites" code_datatype="map">Mappings of users to their favorited content sources</component>
+    <component code_name="favoriteCounts" code_datatype="map">Counts of how many times a content sources has been favorited</component>
+  </state>
+  <actions>
+    <action>
+      <name>favorite</name>
+      <precondition>Authenticated user and existing content source</precondition>
+      <effect>Marks the content source as favorited by the user and increments the favorites count.</effect>
+    </action>
+    <action>
+      <name>unfavorite</name>
+      <precondition>Authenticated user has favorited the content source</precondition>
+      <effect>Removes the favorite mark and decrements the favorites count</effect>
+    </action>
+  </actions>
+  <operationalPrinciple>
+    Authenticated users can favorite or unfavorite content sources, 
+    which updates the favorites count and allows users to 
+    track their preferred content.
+  </operationalPrinciple>
+</concept>
+
+<concept iteration="03">
+    <name>Tagging</name>
+    <purpose>Categorizes content with relevant identifiers</purpose>
+    <state>
+        <component code_name="tags" code_datatype="set">Set of all available tags.</component>
+        <component code_name="articleTags" code_datatype="map">Mappings of content sources to their associated tags.</component>
+    </state>
+    <actions>
+        <action>
+            <name>addTag</name>
+            <precondition>Authenticated user creates or assigns a tag to a content source</precondition>
+            <effect>Adds the tag to the content source's tag list.</effect>
+        </action>
+        <action>
+            <name>removeTag</name>
+            <precondition>Authenticated user removes a tag from a content source.</precondition>
+            <effect>Removes the tag from the content sources's tag list.</effect>
+        </action>
+        <action>
+            <name>listTags</name>
+            <precondition>None.</precondition>
+            <effect>Retrieves the list of all tags.</effect>
+        </action>
+    </actions>
+    <operationalPrinciple>
+        Users can assign or remove tags to categorize content sources,
+        and the system maintains a list of all available tags for filtering and discovery.
+    </operationalPrinciple>
+</concept>
+
+<!-- Infrastructure concepts -->
+<concept iteration="03">
+    <name>ErrorHandling</name>
+    <purpose>Handles errors and status codes resulting from API requests</purpose>
+    <state>
+        <component code_name="errors" code_datatype="map">Structure of error messages associated with failed requests.</component>
+        <component code_name="statusCodes" code_datatype="map">Mappings of request failures to HTTP status codes.</component>
+    </state>
+    <actions>
+        <action>
+            <name>returnError</name>
+            <precondition>Request validation fails or unauthorized access attempted</precondition>
+            <effect>Returns an error message with the appropriate status code</effect>
+        </action>
+        <action>
+            <name>handleNotFound</name>
+            <precondition>Requested resource does not exist</precondition>
+            <effect>Returns a 404 Not Found status code</effect>
+        </action>
+        <action>
+            <name>handleUnauthorized</name>
+            <precondition>Authentication is required but not provided or invalid</precondition>
+            <effect>Returns a 401 Unauthorized status code</effect>
+        </action>
+        <action>
+            <name>handleForbidden</name>
+            <precondition>User lacks permission to perform the action</precondition>
+            <effect>Returns a 403 Forbidden status code</effect>
+        </action>
+        <action>
+            <name>handleValidationError</name>
+            <precondition>Request data fails validation</precondition>
+            <effect>Returns a 422 Unprocessable Entity status code with error details</effect>
+        </action>
+    </actions>
+    <operationalPrinciple>
+        When API requests fail due to validation errors, 
+        unauthorized access, forbidden actions, or resource not found, 
+        appropriate error messages and HTTP status codes are returned 
+        to the client.
+    </operationalPrinciple>
+</concept>
+
+<concept iteration="01">
+    <name>WebRequesting</name>
+    <purpose>Handles incoming messages from clients requesting resources from the source (server)</purpose>
+    <state>
+        <component code_name="requests" code_datatype="set">Set of incoming web requests</component>
+        <component code_name="responses" code_datatype="map">Mappings of requests to their responses</component>
+    </state>
+    <actions>
+        <action>
+            <name>receiveRequest</name>
+            <precondition>A client sends a web request./precondition>
+            <effect>Processes the incoming request and prepares a response</effect>
+        </action>
+        <action>
+            <name>sendResponse</name>
+            <precondition>Response is ready for the request</precondition>
+            <effect>Sends the response back to the client</effect>
+        </action>
+    </actions>
+    <operationalPrinciple>
+        When a client sends a web request, the system processes it 
+        according to the defined API endpoints and returns the appropriate 
+        response to the client.
+    </operationalPrinciple>
+</concept>
+
+<concept iteration="01">
+  <name>WebSessioning</name>
+  <purpose>Manages sessions across multiple requests, maintaining state between interactions</purpose>
+  <state>
+    <component code_name="sessions" code_datatype="map">Mappings of session tokens to data.</component>
+    <component code_name="activeSessions" code_datatype="set">Set of currently active sessions.</component>
+  </state>
+  <actions>
+    <action>
+      <name>startSession</name>
+      <precondition>User is authenticated</precondition>
+      <effect>Creates a new web session</effect>
+    </action>
+    <action>
+      <name>endSession</name>
+      <precondition>Session exists</precondition>
+      <effect>Terminates the web session</effect>
+    </action>
+    <action>
+      <name>validateSession</name>
+      <precondition>Session token is provided</precondition>
+      <effect>Validates the session and retrieves associated data</effect>
+    </action>
+  </actions>
+  <operationalPrinciple>
+    Upon user authentication, a web session is 
+    initiated with a unique session, which is used
+    to maintain user state across multiple web requests 
+    until the session is terminated.
+  </operationalPrinciple>
+</concept>
+
+
+<!-- User concepts -->
+<concept>
+    <name>Account</name>
+    <purpose>Manages user information to provide account details and preferences</purpose>
+    <state>
+        <component code_name="accountInfo" code_datatype="map">User account info fields</component>
+        <component code_name="preferences" code_datatype="map">User-specific settings and preferences</component>
+        <component code_name="metadata" code_datatype="map">Metadata associated with the account</component>
+    </state>
+    <actions>
+        <action>
+            <name>createAccount</name>
+            <precondition>Valid registration data provided.</precondition>
+            <effect>Creates a new user account.</effect>
+        </action>
+        <action>
+            <name>updateAccount</name>
+            <precondition>User is authenticated.</precondition>
+            <effect>Updates the user's account information</effect>
+        </action>
+        <action>
+            <name>deleteAccount</name>
+            <precondition>User is authenticated and confirms deletion.</precondition>
+            <effect>Deletes the user's account and associated data.</effect>
+        </action>
+    </actions>
+    <operationalPrinciple>
+        When a user registers, their account information is stored to
+        enable access to services. Users are free to update or delete 
+        their account as needed.
+    </operationalPrinciple>
+</concept>
+
+<concept iteration="03">
+    <name>Following</name>
+    <purpose>Enables following or unfollowing of other users, allowing access to updates from followed users</purpose>
+    <state>
+        <component code_name="followers" code_datatype="map">Mappings of users to their followers.</component>
+        <component code_name="following" code_datatype="map">Mappings of users to those they are following.</component>
+    </state>
+    <actions>
+        <action>
+            <name>follow</name>
+            <precondition>User is authenticated and target user exists.</precondition>
+            <effect>Establishes a following relationship from the user to the target user.</effect>
+        </action>
+        <action>
+            <name>unfollow</name>
+            <precondition>User is authenticated and is following the target user.</precondition>
+            <effect>Removes the following relationship from the user to the target user.</effect>
+        </action>
+    </actions>
+    <operationalPrinciple>
+        When a user follows another user, their updates are 
+        included in the follower's feed. Unfollowing removes 
+        this relationship, stopping further updates.
+    </operationalPrinciple>
+</concept>
+
+<concept iteration="03">
+    <name>Profile</name>
+    <purpose>Stores and displays biographical information publicly</purpose>
+    <state>
+        <component code_name="avatar" code_datatype="text">storage location of the user's avatar representation</component>
+        <component code_name="bio" code_datatype="text">Biographical information about the user</component>
+        <component code_name="publicInfo" code_datatype="map">Publicly accessible user information</component>
+    </state>
+    <actions>
+        <action>
+            <name>updateProfile</name>
+            <precondition>User is authenticated.</precondition>
+            <effect>Updates the user's profile information.</effect>
+        </action>
+        <action>
+            <name>resetPassword</name>
+            <precondition>User identity verified via alternate means.</precondition>
+            <effect>Updates stored credentials.</effect>
+        </action>
+        <action>
+            <name>viewProfile</name>
+            <precondition>Profile exists.</precondition>
+            <effect>Retrieves and displays the user's profile information.</effect>
+        </action>
+    </actions>
+    <operationalPrinciple>
+        When user updates their profile, their avatar 
+        and bio are stored and made publicly visible
+    </operationalPrinciple>
+</concept>
