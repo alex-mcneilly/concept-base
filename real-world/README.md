@@ -1,6 +1,6 @@
-The "Concept" of Concepts
+# The Base "Concept" Concept and Code Generation
 
-Written by Alexander R. Mcneilly <mcneilly@mit.edu>
+### Written by Alexander R. Mcneilly (<mcneilly@mit.edu>)
 
 A foundational `Concept.concept` serves as the bedrock 
 upon which all other software concepts are built. This 
