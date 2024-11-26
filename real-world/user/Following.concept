@@ -1,0 +1,25 @@
+<concept iteration="03">
+    <name>Following</name>
+    <purpose>Enables following or unfollowing of other users, allowing access to updates from followed users</purpose>
+    <state>
+        <component code_name="followers" code_datatype="map">Mappings of users to their followers.</component>
+        <component code_name="following" code_datatype="map">Mappings of users to those they are following.</component>
+    </state>
+    <actions>
+        <action>
+            <name>follow</name>
+            <precondition>User is authenticated and target user exists.</precondition>
+            <effect>Establishes a following relationship from the user to the target user.</effect>
+        </action>
+        <action>
+            <name>unfollow</name>
+            <precondition>User is authenticated and is following the target user.</precondition>
+            <effect>Removes the following relationship from the user to the target user.</effect>
+        </action>
+    </actions>
+    <operationalPrinciple>
+        When a user follows another user, their updates are 
+        included in the follower's feed. Unfollowing removes 
+        this relationship, stopping further updates.
+    </operationalPrinciple>
+</concept>

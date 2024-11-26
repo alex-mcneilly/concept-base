@@ -1,0 +1,29 @@
+<concept iteration="03">
+    <name>Tagging</name>
+    <purpose>Categorizes content with relevant identifiers</purpose>
+    <state>
+        <component code_name="tags" code_datatype="set">Set of all available tags.</component>
+        <component code_name="articleTags" code_datatype="map">Mappings of content sources to their associated tags.</component>
+    </state>
+    <actions>
+        <action>
+            <name>addTag</name>
+            <precondition>Authenticated user creates or assigns a tag to a content source</precondition>
+            <effect>Adds the tag to the content source's tag list.</effect>
+        </action>
+        <action>
+            <name>removeTag</name>
+            <precondition>Authenticated user removes a tag from a content source.</precondition>
+            <effect>Removes the tag from the content sources's tag list.</effect>
+        </action>
+        <action>
+            <name>listTags</name>
+            <precondition>None.</precondition>
+            <effect>Retrieves the list of all tags.</effect>
+        </action>
+    </actions>
+    <operationalPrinciple>
+        Users can assign or remove tags to categorize content sources,
+        and the system maintains a list of all available tags for filtering and discovery.
+    </operationalPrinciple>
+</concept>

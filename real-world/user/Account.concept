@@ -1,0 +1,31 @@
+<concept>
+    <name>Account</name>
+    <purpose>Manages user information to provide account details and preferences</purpose>
+    <state>
+        <component code_name="accountInfo" code_datatype="map">User account info fields</component>
+        <component code_name="preferences" code_datatype="map">User-specific settings and preferences</component>
+        <component code_name="metadata" code_datatype="map">Metadata associated with the account</component>
+    </state>
+    <actions>
+        <action>
+            <name>createAccount</name>
+            <precondition>Valid registration data provided.</precondition>
+            <effect>Creates a new user account.</effect>
+        </action>
+        <action>
+            <name>updateAccount</name>
+            <precondition>User is authenticated.</precondition>
+            <effect>Updates the user's account information</effect>
+        </action>
+        <action>
+            <name>deleteAccount</name>
+            <precondition>User is authenticated and confirms deletion.</precondition>
+            <effect>Deletes the user's account and associated data.</effect>
+        </action>
+    </actions>
+    <operationalPrinciple>
+        When a user registers, their account information is stored to
+        enable access to services. Users are free to update or delete 
+        their account as needed.
+    </operationalPrinciple>
+</concept>

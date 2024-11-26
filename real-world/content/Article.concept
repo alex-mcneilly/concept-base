@@ -1,0 +1,56 @@
+<concept iteration="02">
+    <name>Articleing</name>
+    <purpose>Handles articles authored by users</purpose>
+    <state>
+        <component code_name="articles" code_datatype="map">Store of articles with its attributes</component>
+        <component code_name="slugs" code_datatype="map">Unique identifiers for articles based on titles</component>
+    </state>
+    <actions>
+        <action>
+            <name>createArticle</name>
+            <precondition>Authenticated user provides required article data.</precondition>
+            <effect>Creates a new article and assigns a unique slug.</effect>
+        </action>
+        <action>
+            <name>updateArticle</name>
+            <precondition>Authenticated user is the author of the article.</precondition>
+            <effect>Updates the article's content and potentially its slug.</effect>
+        </action>
+        <action>
+            <name>deleteArticle</name>
+            <precondition>Authenticated user is the author of the article.</precondition>
+            <effect>Deletes the specified article.</effect>
+        </action>
+        <action>
+            <name>favoriteArticle</name>
+            <precondition>Authenticated user.</precondition>
+            <effect>Marks the article as favorited by the user and increments the favorites count.</effect>
+        </action>
+        <action>
+            <name>unfavoriteArticle</name>
+            <precondition>Authenticated user has favorited the article.</precondition>
+            <effect>Removes the favorite mark and decrements the favorites count.</effect>
+        </action>
+        <action>
+            <name>listArticles</name>
+            <precondition>None or query parameters provided.</precondition>
+            <effect>Retrieves a list of articles based on filters and pagination.</effect>
+        </action>
+        <action>
+            <name>feedArticles</name>
+            <precondition>Authenticated user.</precondition>
+            <effect>Retrieves articles from users that the authenticated user follows.</effect>
+        </action>
+        <action>
+            <name>getArticle</name>
+            <precondition>Article exists.</precondition>
+            <effect>Retrieves the specified article.</effect>
+        </action>
+    </actions>
+    <operationalPrinciple>
+        Users can create articles with titles, descriptions, and bodies,
+        which are stored with unique slugs. Other users can view, update,
+        delete, favorite, and unfavorite these articles, with lists being
+        filtered and paginated as needed.
+    </operationalPrinciple>
+</concept>

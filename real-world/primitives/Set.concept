@@ -1,0 +1,29 @@
+<concept iteration="04">
+    <name>Set</name>
+    <purpose>Manages collections of unique elements</purpose>
+    <state>
+        <component code_name="elements" code_datatype="set">Set of unique elements</component>
+    </state>
+    <actions>
+        <action>
+            <name>addElement</name>
+            <precondition>Element is not already in the set./precondition>
+            <effect>Adds the element to the set</effect>
+        </action>
+        <action>
+            <name>removeElement</name>
+            <precondition>Element exists in the set</precondition>
+            <effect>Removes the element from the set</effect>
+        </action>
+        <action>
+            <name>containsElement</name>
+            <precondition>Element is specified</precondition>
+            <effect>Checks if the element is present in the set</effect>
+        </action>
+    </actions>
+    <operationalPrinciple>
+        Elements can be added to or removed from the set, 
+        ensuring each element is unique and providing efficient 
+        lookup and management.
+    </operationalPrinciple>
+</concept>

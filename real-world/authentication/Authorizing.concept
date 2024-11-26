@@ -1,0 +1,31 @@
+<concept>
+    <name>Authorizing</name>
+    <purpose>Controls access to resources based on user permissions and roles.</purpose>
+    <state>
+        <component code_name="permissions" code_datatype="map">Mappings of roles to their permissions.</component>
+        <component code_name="roles" code_datatype="set">Defined user roles within the system.</component>
+        <component code_name="userRoles" code_datatype="map">Mappings of users to their assigned roles.</component>
+    </state>
+    <actions>
+        <action>
+            <name>assignRole</name>
+            <precondition>User exists and role is defined.</precondition>
+            <effect>Assigns a role to a user.</effect>
+        </action>
+        <action>
+            <name>revokeRole</name>
+            <precondition>User has the role assigned.</precondition>
+            <effect>Revokes a role from a user.</effect>
+        </action>
+        <action>
+            <name>checkPermission</name>
+            <precondition>User is authenticated.</precondition>
+            <effect>Determines if the user has the required permission to access a resource.</effect>
+        </action>
+    </actions>
+    <operationalPrinciple>
+        Users assigned roles which grant them specific permissions. When a user attempts 
+        to access a resource, the system checks if their roles include the necessary 
+        permissions to allow the action.
+    </operationalPrinciple>
+</concept>

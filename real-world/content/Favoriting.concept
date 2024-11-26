@@ -1,0 +1,25 @@
+<concept iteration="04">
+  <name>Favoriting</name>
+  <purpose>Enables users to favorite or unfavorite content sources</purpose>
+  <state>
+    <component code_name="favorites" code_datatype="map">Mappings of users to their favorited content sources</component>
+    <component code_name="favoriteCounts" code_datatype="map">Counts of how many times a content sources has been favorited</component>
+  </state>
+  <actions>
+    <action>
+      <name>favorite</name>
+      <precondition>Authenticated user and existing content source</precondition>
+      <effect>Marks the content source as favorited by the user and increments the favorites count.</effect>
+    </action>
+    <action>
+      <name>unfavorite</name>
+      <precondition>Authenticated user has favorited the content source</precondition>
+      <effect>Removes the favorite mark and decrements the favorites count</effect>
+    </action>
+  </actions>
+  <operationalPrinciple>
+    Authenticated users can favorite or unfavorite content sources, 
+    which updates the favorites count and allows users to 
+    track their preferred content.
+  </operationalPrinciple>
+</concept>

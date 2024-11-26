@@ -1,0 +1,34 @@
+<concept iteration="01">
+    <name>Collection</name>
+    <purpose>Manages ordered or filtered assemblies of items based on a specified rule</purpose>
+    <state>
+        <component code_name="collections" code_datatype="map">Group of items organized based on a rule</component>
+    </state>
+    <actions>
+        <action>
+            <name>createCollection</name>
+            <precondition>Rule for collection is defined</precondition>
+            <effect>Creates a new collection based on the specified rule</effect>
+        </action>
+        <action>
+            <name>updateCollection</name>
+            <precondition>Collection exists</precondition>
+            <effect>Updates the rules or items in the collection</effect>
+        </action>
+        <action>
+            <name>deleteCollection</name>
+            <precondition>Collection exists</precondition>
+            <effect>Deletes the specified collection</effect>
+        </action>
+        <action>
+            <name>getCollection</name>
+            <precondition>Collection exists</precondition>
+            <effect>Retrieves the items in the specified collection</effect>
+        </action>
+    </actions>
+    <operationalPrinciple>
+        Users can create, update, delete, and retrieve collections of items 
+        that are systematically ordered or filtered based on 
+        defined rules or criteria.
+    </operationalPrinciple>
+</concept>

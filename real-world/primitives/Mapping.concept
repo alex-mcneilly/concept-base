@@ -1,0 +1,28 @@
+<concept iteration="01">
+  <name>Mapping</name>
+  <purpose>Highlights relationship between different entities within a system</purpose>
+  <state>
+    <component code_name="relations" code_datatype="map">Mappings between entities, defining their relationships</component>
+  </state>
+  <actions>
+    <action>
+      <name>createMapping</name>
+      <precondition>Entities to be mapped exist</precondition>
+      <effect>Establishes a new relationship between entities</effect>
+    </action>
+    <action>
+      <name>removeMapping</name>
+      <precondition>Mapping exists between entities</precondition>
+      <effect>Removes the existing relationship between entities</effect>
+    </action>
+    <action>
+      <name>getMapping</name>
+      <precondition>Entities are specified</precondition>
+      <effect>Retrieves the relationship between the specified entities</effect>
+    </action>
+  </actions>
+  <operationalPrinciple>
+    Relationships between entities are defined and managed through mappings,
+     allowing the system to understand how different components interact.
+  </operationalPrinciple>
+</concept>

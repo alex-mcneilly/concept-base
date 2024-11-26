@@ -1,0 +1,25 @@
+<concept iteration="01">
+    <name>WebRequesting</name>
+    <purpose>Handles incoming messages from clients requesting resources from the source (server)</purpose>
+    <state>
+        <component code_name="requests" code_datatype="set">Set of incoming web requests</component>
+        <component code_name="responses" code_datatype="map">Mappings of requests to their responses</component>
+    </state>
+    <actions>
+        <action>
+            <name>receiveRequest</name>
+            <precondition>A client sends a web request./precondition>
+            <effect>Processes the incoming request and prepares a response</effect>
+        </action>
+        <action>
+            <name>sendResponse</name>
+            <precondition>Response is ready for the request</precondition>
+            <effect>Sends the response back to the client</effect>
+        </action>
+    </actions>
+    <operationalPrinciple>
+        When a client sends a web request, the system processes it 
+        according to the defined API endpoints and returns the appropriate 
+        response to the client.
+    </operationalPrinciple>
+</concept>

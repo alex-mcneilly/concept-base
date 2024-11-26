@@ -1,0 +1,19 @@
+<concept iteration="06">
+    <name>Authenticating</name>
+    <purpose>Verifies the identity of users when accessing the system.</purpose>
+    <state>
+        <component code_name="credentials" code_datatype="map">Stored authentication credentials (e.g., email/password pairs).</component>
+        <component code_name="sessions" code_datatype="set">Currently active authenticated sessions.</component>
+        <component code_name="failedAttempts" code_datatype="map">Count of failed login attempts per user/IP.</component>
+    </state>
+    <actions>
+        <action>
+            <name>authenticate</name>
+            <precondition>Valid credentials provided.</precondition>
+            <effect>Creates a new authenticated session.</effect>
+        </action>
+    </actions>
+    <operationalPrinciple>
+        Users provide credentials to prove their identity. If valid, they are allowed access to protected resources until their authentication ends
+    </operationalPrinciple>
+</concept>

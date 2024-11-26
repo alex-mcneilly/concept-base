@@ -1,0 +1,30 @@
+<concept iteration="03">
+    <name>Profile</name>
+    <purpose>Stores and displays biographical information publicly</purpose>
+    <state>
+        <component code_name="avatar" code_datatype="text">storage location of the user's avatar representation</component>
+        <component code_name="bio" code_datatype="text">Biographical information about the user</component>
+        <component code_name="publicInfo" code_datatype="map">Publicly accessible user information</component>
+    </state>
+    <actions>
+        <action>
+            <name>updateProfile</name>
+            <precondition>User is authenticated.</precondition>
+            <effect>Updates the user's profile information.</effect>
+        </action>
+        <action>
+            <name>resetPassword</name>
+            <precondition>User identity verified via alternate means.</precondition>
+            <effect>Updates stored credentials.</effect>
+        </action>
+        <action>
+            <name>viewProfile</name>
+            <precondition>Profile exists.</precondition>
+            <effect>Retrieves and displays the user's profile information.</effect>
+        </action>
+    </actions>
+    <operationalPrinciple>
+        When user updates their profile, their avatar 
+        and bio are stored and made publicly visible
+    </operationalPrinciple>
+</concept>

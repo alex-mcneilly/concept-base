@@ -1,0 +1,29 @@
+<concept iteration="04">
+    <name>Commenting</name>
+    <purpose>Enables users to handle comments for content</purpose>
+    <state>
+        <component code_name="comments" code_datatype="map">Store of comments associated with content source</component>
+        <component code_name="commentIds" code_datatype="set">Unique identifiers for comments</component>
+    </state>
+    <actions>
+        <action>
+            <name>addComment</name>
+            <precondition>Authenticated user and existing content source</precondition>
+            <effect>Adds a new comment to the specified content source.</effect>
+        </action>
+        <action>
+            <name>getComments</name>
+            <precondition>Content source exists.</precondition>
+            <effect>Retrieves all comments for the specified content source.</effect>
+        </action>
+        <action>
+            <name>deleteComment</name>
+            <precondition>Authenticated user is the author of the comment.</precondition>
+            <effect>Deletes the specified comment.</effect>
+        </action>
+    </actions>
+    <operationalPrinciple>
+        Authenticated users can add comments to content, 
+        which are stored and can be retrieved or deleted by their authors.
+    </operationalPrinciple>
+</concept>

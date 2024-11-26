@@ -1,0 +1,31 @@
+<concept iteration="01">
+  <name>WebSessioning</name>
+  <purpose>Manages sessions across multiple requests, maintaining state between interactions</purpose>
+  <state>
+    <component code_name="sessions" code_datatype="map">Mappings of session tokens to data.</component>
+    <component code_name="activeSessions" code_datatype="set">Set of currently active sessions.</component>
+  </state>
+  <actions>
+    <action>
+      <name>startSession</name>
+      <precondition>User is authenticated</precondition>
+      <effect>Creates a new web session</effect>
+    </action>
+    <action>
+      <name>endSession</name>
+      <precondition>Session exists</precondition>
+      <effect>Terminates the web session</effect>
+    </action>
+    <action>
+      <name>validateSession</name>
+      <precondition>Session token is provided</precondition>
+      <effect>Validates the session and retrieves associated data</effect>
+    </action>
+  </actions>
+  <operationalPrinciple>
+    Upon user authentication, a web session is 
+    initiated with a unique session, which is used
+    to maintain user state across multiple web requests 
+    until the session is terminated.
+  </operationalPrinciple>
+</concept>

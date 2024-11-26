@@ -1,0 +1,17 @@
+<concept iteration="05">
+    <name>Concept</name>
+    <purpose>Serves as the foundational abstraction for all software concepts, providing a standard format for its related actions, purpose, and behavior definition</purpose>
+    <state>
+        <component code_name="schema" code_datatype="object">Defines the structure of the concept including tables, views, and actions.</component>
+    </state>
+    <actions>
+        <action>
+            <name>initializeSchema</name>
+            <precondition>None</precondition>
+            <effect>Initializes the concept's schema.</effect>
+        </action>
+    </actions>
+    <operationalPrinciple>
+        When a new concept is defined, it initializes its schema to establish its structure and behavior, ensuring consistency across all concepts.
+    </operationalPrinciple>
+</concept>

@@ -1,0 +1,30 @@
+<concept>
+    <name>Token</name>
+    <purpose>Generates and manage tokens</purpose>
+    <state>
+        <component code_name="tokens" code_datatype="map">Token keys, signed using secrets or key pairs</component>
+        <component code_name="revokedTokens" code_datatype="set">List of tokens that have been revoked.</component>
+    </state>
+    <actions>
+        <action>
+            <name>generateToken</name>
+            <precondition>User is authenticated.</precondition>
+            <effect>Generates a new token for the user.</effect>
+        </action>
+        <action>
+            <name>revokeToken</name>
+            <precondition>Token exists and is valid.</precondition>
+            <effect>Revokes the specified token.</effect>
+        </action>
+        <action>
+            <name>validateToken</name>
+            <precondition>Token is provided.</precondition>
+            <effect>Validates the token's authenticity and status.</effect>
+        </action>
+    </actions>
+    <operationalPrinciple>
+        A token can be generated when called to. 
+        Tokens can be validated for authenticity
+        and revoked as needed to manage access.
+    </operationalPrinciple>
+</concept>

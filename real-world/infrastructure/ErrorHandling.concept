@@ -1,0 +1,41 @@
+<concept iteration="03">
+    <name>ErrorHandling</name>
+    <purpose>Handles errors and status codes resulting from API requests</purpose>
+    <state>
+        <component code_name="errors" code_datatype="map">Structure of error messages associated with failed requests.</component>
+        <component code_name="statusCodes" code_datatype="map">Mappings of request failures to HTTP status codes.</component>
+    </state>
+    <actions>
+        <action>
+            <name>returnError</name>
+            <precondition>Request validation fails or unauthorized access attempted</precondition>
+            <effect>Returns an error message with the appropriate status code</effect>
+        </action>
+        <action>
+            <name>handleNotFound</name>
+            <precondition>Requested resource does not exist</precondition>
+            <effect>Returns a 404 Not Found status code</effect>
+        </action>
+        <action>
+            <name>handleUnauthorized</name>
+            <precondition>Authentication is required but not provided or invalid</precondition>
+            <effect>Returns a 401 Unauthorized status code</effect>
+        </action>
+        <action>
+            <name>handleForbidden</name>
+            <precondition>User lacks permission to perform the action</precondition>
+            <effect>Returns a 403 Forbidden status code</effect>
+        </action>
+        <action>
+            <name>handleValidationError</name>
+            <precondition>Request data fails validation</precondition>
+            <effect>Returns a 422 Unprocessable Entity status code with error details</effect>
+        </action>
+    </actions>
+    <operationalPrinciple>
+        When API requests fail due to validation errors, 
+        unauthorized access, forbidden actions, or resource not found, 
+        appropriate error messages and HTTP status codes are returned 
+        to the client.
+    </operationalPrinciple>
+</concept>
