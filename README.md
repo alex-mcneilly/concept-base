@@ -32,6 +32,7 @@ concepts/
     analytics/        # Analysis and reporting
     document/         # Document handling
     workflow/         # Process management
+    primitives/       # Primitive base concepts
 ```
 
 ## Concept File Format
@@ -39,14 +40,15 @@ concepts/
 Each concept is defined in an XML file with the following structure:
 
 ```xml
-<concept>
+<concept iteration="XX">
   <name>ConceptName</name>
   <purpose>Clear statement of the concept's purpose</purpose>
   <state>
-    <component name="stateName" type="type">description</component>
+    <component code_name="stateName" code_datatype="type">description</component>
   </state>
   <actions>
-    <action name="actionName">
+    <action>
+      <name>ActionName</name>
       <precondition>required conditions</precondition>
       <effect>state changes</effect>
     </action>
