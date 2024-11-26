@@ -1,4 +1,7 @@
-<concept>
+<!-- build small testing framework -->
+<!-- small unit tests for each action -->
+
+<concept id="1">
  <name>Authentication</name>
  <purpose>
    To verify the identity of users and ensure they are who they claim to be when accessing a system
@@ -15,6 +18,7 @@
    </component>
  </state>
  <actions>
+ <!-- authenticate rather than login/logout -->
    <action name="login">
      <precondition>Valid credentials provided</precondition>
      <effect>Creates new authenticated session</effect>

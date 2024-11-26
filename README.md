@@ -59,6 +59,8 @@ Each concept is defined in an XML file with the following structure:
 
 ## Contributing
 
+106 CONCEPTS SO FAR!
+
 1. Check if the concept already exists
 2. Use the template from `templates/concept-template.xml`
 3. Place the file in the appropriate category folder
