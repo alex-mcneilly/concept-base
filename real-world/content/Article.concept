@@ -31,12 +31,12 @@
             <effect>Removes the favorite mark and decrements the favorites count.</effect>
         </action>
         <action>
-            <name>listArticles</name>
+            <name>list</name>
             <precondition>None or query parameters provided.</precondition>
             <effect>Retrieves a list of articles based on filters and pagination.</effect>
         </action>
         <action>
-            <name>feedArticles</name>
+            <name>feed</name>
             <precondition>Authenticated user.</precondition>
             <effect>Retrieves articles from users that the authenticated user follows.</effect>
         </action>
