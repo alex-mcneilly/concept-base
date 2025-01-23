@@ -1,5 +1,4 @@
-<concept iteration="02">
-    <name>Articleing</name>
+<concept iteration="04" name="Articleing">
     <purpose>Handles articles authored by users</purpose>
     <state>
         <component code_name="articles" code_datatype="map">Store of articles with its attributes</component>
@@ -7,27 +6,27 @@
     </state>
     <actions>
         <action>
-            <name>createArticle</name>
+            <name>create</name>
             <precondition>Authenticated user provides required article data.</precondition>
             <effect>Creates a new article and assigns a unique slug.</effect>
         </action>
         <action>
-            <name>updateArticle</name>
+            <name>update</name>
             <precondition>Authenticated user is the author of the article.</precondition>
             <effect>Updates the article's content and potentially its slug.</effect>
         </action>
         <action>
-            <name>deleteArticle</name>
+            <name>delete</name>
             <precondition>Authenticated user is the author of the article.</precondition>
             <effect>Deletes the specified article.</effect>
         </action>
         <action>
-            <name>favoriteArticle</name>
+            <name>favorite</name>
             <precondition>Authenticated user.</precondition>
             <effect>Marks the article as favorited by the user and increments the favorites count.</effect>
         </action>
         <action>
-            <name>unfavoriteArticle</name>
+            <name>unfavorite</name>
             <precondition>Authenticated user has favorited the article.</precondition>
             <effect>Removes the favorite mark and decrements the favorites count.</effect>
         </action>
@@ -42,7 +41,7 @@
             <effect>Retrieves articles from users that the authenticated user follows.</effect>
         </action>
         <action>
-            <name>getArticle</name>
+            <name>get</name>
             <precondition>Article exists.</precondition>
             <effect>Retrieves the specified article.</effect>
         </action>
