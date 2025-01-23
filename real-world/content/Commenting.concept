@@ -1,5 +1,4 @@
-<concept iteration="04">
-    <name>Commenting</name>
+<concept iteration="06" name="Commenting">
     <purpose>Enables users to handle comments for content</purpose>
     <state>
         <component code_name="comments" code_datatype="map">Store of comments associated with content source</component>
@@ -7,17 +6,17 @@
     </state>
     <actions>
         <action>
-            <name>addComment</name>
+            <name>create</name>
             <precondition>Authenticated user and existing content source</precondition>
-            <effect>Adds a new comment to the specified content source.</effect>
+            <effect>Creates a new comment to the specified content source.</effect>
         </action>
         <action>
-            <name>getComments</name>
+            <name>get</name>
             <precondition>Content source exists.</precondition>
             <effect>Retrieves all comments for the specified content source.</effect>
         </action>
         <action>
-            <name>deleteComment</name>
+            <name>delete</name>
             <precondition>Authenticated user is the author of the comment.</precondition>
             <effect>Deletes the specified comment.</effect>
         </action>
